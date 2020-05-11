@@ -4,7 +4,13 @@
 
 ---
 
-## The Event MEGA protocol
+Event MEGA is a protocol and a set of tools for event-streaming. Implementations:
+
+- [SQS MEGA](https://github.com/mega-distributed/sqs-mega)
+
+## The MEGA protocol for event-streaming
+
+All MEGA events will be encoded using JSON format. The following attributes are expected:
 
 - `protocol` (_required_, string): should contain the `MEGA` string.
 - `version` (_required_, integer): specifies the version of the protocol. Here we consciously avoid the unnecessary complexities of [semantic versioning](https://semver.org). The current version is 1, and this number will only increase if backward incompatible changes are introduced.
