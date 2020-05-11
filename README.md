@@ -1,5 +1,5 @@
 <p align="center">
-    <img alt="MEGA" src="https://github.com/mega-distributed/event-mega/raw/master/resources/logo/mega_logo_large.png">
+    <img alt="MEGA" src="https://github.com/mega-distributed/mega-event-protocol/raw/master/resources/logo/mega_logo_large.png">
 </p>
 
 ---
@@ -8,9 +8,21 @@ This is the MEGA protocol for event-streaming. Implementations:
 
 - [SQS MEGA](https://github.com/mega-distributed/sqs-mega)
 
-## The MEGA protocol
+## The MEGA event-streaming protocol
 
-All MEGA events must be encoded using JSON format. The following attributes are expected:
+MEGA uses JSON as its data-interchange and object representation format. Most implementations also supports [BJSON](http://bsonspec.org) (Binary JSON), which is more compact and efficient.
+
+To ease adoption, MEGA implementations should be tolerant to events or messages
+that do not adhere to the protocol. The idea is that MEGA can happily co-exist
+with your existing architecture or legacy systems. In order to accomplish this,
+it uses the following JSON attribute to identify a MEGA payload:
+
+```json
+{
+    "protocol": "mega",
+    ...
+}
+```
 
 A MEGA event can be a simple as this:
 ```json
@@ -45,8 +57,7 @@ as useful as this:
             "name": "John Doe",
             "username": "john.doe",
             "ssn": "497279436",
-            "birthdate": "1986-02-15",
-            "country": "Brazil"
+            "birthdate": "1986-02-15"
         }
     }
 }
@@ -153,5 +164,5 @@ Here is a list of all supported attributes:
 | `event.attributes` | _optional_   | object   | Dictionary of application-specific event attributes. Keep it minimal and only send the data that is specific to the event. These attributes will be used for pattern matching with subscribers. |
 | `object.current`   | _optional_   | object   | Current representation of the object or entity that this event refers to. For example, if the event is about an item that was added to the shopping cart, we can use this attribute to transmit the full contents of the shopping cart. |
 | `object.previous`  | _optional_   | object   | Previous representation of the object or entity that this event refers to. This is useful to transmit the state of the entity right before the event happened, if such information is available. |
-| `object.version`   | _optional_   | object   | This is the version of the object or entity representation. Here we give you the option to version your objects differently than your events. Reason being objects change more frequently, while events do not change so often. If not specified, it defaults to the version of the event. |
+| `object.version`   | _optional_   | object   | This is the version of the object or entity representation. Here we give you the opportunity to version your objects differently than your events. This is because entities change more frequently, while events do not change so often. If not specified, it defaults to the version of the event. |
 | `extra`            | _optional_   | object   | Any further application data or metadata that can be associated with this event. |
