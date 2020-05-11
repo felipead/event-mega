@@ -24,7 +24,7 @@ it uses the following JSON attribute to identify a MEGA payload:
 }
 ```
 
-A MEGA event can be a simple as this:
+A MEGA event can be very simple:
 ```json
 {
     "protocol": "mega",
@@ -36,7 +36,8 @@ A MEGA event can be a simple as this:
     }
 }
 ```
-as useful as this:
+
+It can also be more useful:
 ```json
 {
     "protocol": "mega",
@@ -62,8 +63,8 @@ as useful as this:
     }
 }
 ```
-or as feature-rich as this:
 
+MEGA can also be as much feature-rich as you would like:
 ```json
 {
     "protocol": "mega",
@@ -155,7 +156,7 @@ Here is a list of all supported attributes:
 |  Attribute         | Required?    | Type     | Description |
 | ------------------ |:------------:|:--------:| ----------- |
 | `protocol`         | required     | string   | Should contain the `mega` string. Necessary in order to allow MEGA events to co-exist and distinguish themselves from other events or protocols. |
-| `version`          | required     | integer  | Specifies the version of the protocol. Here we consciously avoid the unnecessary complexities of [semantic versioning](https://semver.org). The current version is 1, and this number will only increase if backward incompatible changes are introduced. |
+| `version`          | required     | integer  | Specifies the version of the protocol. Do not confuse it with the version of the event or object payload. Here we consciously avoid the unnecessary complexities of [semantic versioning](https://semver.org). The current version is 1, and this number will only increase if backward incompatible changes are introduced. |
 | `event.name`       | required     | string   | The name of the event, which will be used for subscribers to match. Can be any lower-cased alphanumeric string and can include the following special characters: `.`, `-`, `_`. It is advisable to use a full-qualified name, with a namespace specifying the name of the domain. For example, `shopping_cart.item.added`. |
 | `event.timestamp`  | required     | [ISO-9601](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations) datetime | Timestamp that indicates when the event happened. |
 | `event.version`    | _optional_   | integer  | This is the version of the event, and defaults to 1. It is highly recommended that your events are versioned, to allow breaking changes to be introduced more easily in the future. However, we also want to avoid the complexities of semantic versioning and only increase the version when backward incompatible changes are needed. Design your event subscribers to be [tolerant readers](https://martinfowler.com/bliki/TolerantReader.html). This will allow your architecture to evolve more easily. |
