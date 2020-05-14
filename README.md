@@ -73,7 +73,7 @@ MEGA can also be as much feature-rich as you would like:
         "name": "shopping_cart.item.added",
         "version": 1,
         "timestamp": "2020-05-04T15:53:23.123",
-        "publisher": "shopping_cart",
+        "publisher": "shopping-cart-service",
         "subject": "987650",
         "attributes": {
             "item_id": "61fcc874-624e-40f8-8fd7-0e663c7837e8",
@@ -81,7 +81,8 @@ MEGA can also be as much feature-rich as you would like:
         }
     },
     "object": {
-        "version": 1,
+        "name": "shopping_cart",
+        "version": 2,
         "current": {
             "id": "18a3f92e-1fbf-45eb-8769-d836d0a1be55",
             "user_id": 987650,
@@ -165,5 +166,6 @@ Here is a list of all supported attributes:
 | `event.attributes` | _optional_   | object   | Dictionary of application-specific event attributes. Keep it minimal and only send the data that is specific to the event. These attributes will be used for pattern matching with subscribers. |
 | `object.current`   | _optional_   | object   | Current representation of the object or entity that this event refers to. For example, if the event is about an item that was added to the shopping cart, we can use this attribute to transmit the full contents of the shopping cart. |
 | `object.previous`  | _optional_   | object   | Previous representation of the object or entity that this event refers to. This is useful to transmit the state of the entity right before the event happened, if such information is available. |
+| `object.name`      | _optional_   | string   | If you want, you can give a name to identify your object or entity. |
 | `object.version`   | _optional_   | object   | This is the version of the object or entity representation. Here we give you the opportunity to version your objects differently than your events. This is because entities change more frequently, while events do not change so often. If not specified, it defaults to the version of the event. |
 | `extra`            | _optional_   | object   | Any further application data or metadata that can be associated with this event. |
