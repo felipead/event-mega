@@ -17,11 +17,8 @@ that do not adhere to the protocol. The idea is that MEGA can happily co-exist
 with your existing architecture or legacy systems. In order to accomplish this,
 it uses the following JSON attribute to identify a MEGA payload:
 
-```json
-{
-    "protocol": "mega",
-    ...
-}
+```
+"protocol": "mega"
 ```
 
 A MEGA event can be very simple:
