@@ -10,7 +10,7 @@ This is the MEGA protocol for event-streaming. Implementations:
 
 ## The MEGA event-streaming protocol
 
-MEGA uses JSON as its data-interchange and object representation format. Most implementations also supports [BJSON](http://bsonspec.org) (Binary JSON), which is more compact and efficient.
+MEGA uses JSON as its data-interchange and object representation format. Implementations also supports [BSON](http://bsonspec.org) (_Binary JSON_), which is more compact and efficient.
 
 To ease adoption, MEGA implementations should be tolerant to events or messages
 that do not adhere to the protocol. The idea is that MEGA can happily co-exist
