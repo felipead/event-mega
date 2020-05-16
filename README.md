@@ -44,18 +44,22 @@ It can also be more useful:
         "timestamp": "2020-05-04T15:53:27.823",
         "version": 1,
         "subject": "987650",
-        "publisher": "user",
+        "publisher": "user-service",
         "attributes": {
+            "email": "johndoe_84@example.com",
             "username": "john.doe"
         }
     },
     "object": {
         "current": {
             "id": 987650,
-            "name": "John Doe",
+            "full_name": "John Doe",
             "username": "john.doe",
+            "email": "johndoe_86@example.com",
             "ssn": "497279436",
-            "birthdate": "1986-02-15"
+            "birthdate": "1986-02-15",
+            "created_at": "2020-05-03T12:20:23.000",
+            "updated_at": "2020-05-04T15:52:01.000"
         }
     }
 }
@@ -78,7 +82,8 @@ MEGA can also be as much feature-rich as you would like:
         }
     },
     "object": {
-        "name": "shopping_cart",
+        "type": "shopping_cart",
+        "id": "18a3f92e-1fbf-45eb-8769-d836d0a1be55",
         "version": 2,
         "current": {
             "id": "18a3f92e-1fbf-45eb-8769-d836d0a1be55",
@@ -142,7 +147,7 @@ MEGA can also be as much feature-rich as you would like:
         }
     },
     "extra": {
-        "channel": "website",
+        "channel": "web/desktop",
         "user_agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_4) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/13.1 Safari/605.1.15",
         "user_ip_address": "177.182.205.103"
     }
@@ -163,6 +168,7 @@ Here is a list of all supported attributes:
 | `event.attributes` | _optional_   | object   | Dictionary of application-specific event attributes. Keep it minimal and only send the data that is specific to the event. These attributes will be used for pattern matching with subscribers. |
 | `object.current`   | _optional_   | object   | Current representation of the object or entity that this event refers to. For example, if the event is about an item that was added to the shopping cart, we can use this attribute to transmit the full contents of the shopping cart. |
 | `object.previous`  | _optional_   | object   | Previous representation of the object or entity that this event refers to. This is useful to transmit the state of the entity right before the event happened, if such information is available. |
-| `object.name`      | _optional_   | string   | If you want, you can give a name to identify your object or entity. |
+| `object.id`      | _optional_   | string   | A string that uniquely identifies the object or entity in your systems, if this information is available. |
+| `object.type`      | _optional_   | string   | If you want, you can give a name to identify the type of your object or entity. |
 | `object.version`   | _optional_   | object   | This is the version of the object or entity representation. Here we give you the opportunity to version your objects differently than your events. This is because entities change more frequently, while events do not change so often. If not specified, it defaults to 1. |
 | `extra`            | _optional_   | object   | Any further application data or metadata that can be associated with this event. |
