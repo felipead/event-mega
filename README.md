@@ -42,6 +42,7 @@ It can also be more useful:
         "name": "user.updated",
         "timestamp": "2020-05-04T15:53:27.823",
         "version": 1,
+        "domain": "user",
         "subject": "987650",
         "publisher": "user-service",
         "attributes": {
@@ -73,8 +74,9 @@ MEGA can also be as much feature-rich as you would like:
         "name": "shopping_cart.item.added",
         "version": 1,
         "timestamp": "2020-05-04T15:53:23.123",
-        "publisher": "shopping-cart-service",
+        "domain": "shopping_cart",
         "subject": "987650",
+        "publisher": "shopping-cart-service",
         "attributes": {
             "item_id": "61fcc874-624e-40f8-8fd7-0e663c7837e8",
             "quantity": 5
@@ -162,7 +164,8 @@ Here is a list of all supported attributes:
 | `event.name`       | required     | string   | The name of the event, which will be used for subscribers to match. Can be any lower-cased alphanumeric string and can include the following special characters: `.`, `-`, `_`. It is advisable to use a full-qualified name, with a namespace specifying the name of the domain. For example, `shopping_cart.item.added`. |
 | `event.timestamp`  | required     | [ISO-8601](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations) | Timestamp that indicates when the event happened. If no timezone is specified, UTC will be used. |
 | `event.version`    | _optional_   | integer  | This is the version of the event, and defaults to 1. It is highly recommended that your events are versioned, to allow breaking changes to be introduced more easily in the future. However, we also want to avoid the complexities of semantic versioning and only increase the version when backward incompatible changes are needed. Design your event subscribers to be [tolerant readers](https://martinfowler.com/bliki/TolerantReader.html). This will allow your architecture to evolve more easily. |
-| `event.publisher`  | _optional_   | string   | Any string that can identify the publisher of the event, like the name of a service,  system or domain. |
+| `event.domain`  | _optional_   | string   | The business domain this events belongs to. Like a namespace, it helps grouping events that refer to a common class of business entities. For example, all events about items being added or removed from the user's shopping cart might belong to the `shopping_cart` domain. |
+| `event.publisher`  | _optional_   | string   | Any string that can identify the publisher of the event, like the name of a service, system or application. |
 | `event.subject`    | _optional_   | string   | The subject to which the event refers to. It is usually an entity identifier, like the database primary key. For example, if the event is about an item being added to the user's shopping cart in an e-commerce system, the subject could be the shopping cart ID or even the user ID. |
 | `event.attributes` | _optional_   | object   | Dictionary of application-specific event attributes. Keep it minimal and only send the data that is specific to the event. These attributes will be used for pattern matching with subscribers. |
 | `object.current`   | _optional_   | object   | Current representation of the object or entity that this event refers to. For example, if the event is about an item that was added to the shopping cart, we can use this attribute to transmit the full contents of the shopping cart. |
