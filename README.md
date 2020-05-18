@@ -99,7 +99,7 @@ MEGA can also be as much feature-rich as you would like:
                     "id": "3c7f8798-1d3d-47de-82dd-c6c5e0de74ee",
                     "price": "102.50",
                     "quantity": 1
-                }
+                },
                 {
                     "id": "bba76edc-8afc-4fde-b4c4-ea58a230c5d6",
                     "price": "24.99",
@@ -129,7 +129,7 @@ MEGA can also be as much feature-rich as you would like:
                     "id": "3c7f8798-1d3d-47de-82dd-c6c5e0de74ee",
                     "price": "102.50",
                     "quantity": 1
-                }
+                },
                 {
                     "id": "bba76edc-8afc-4fde-b4c4-ea58a230c5d6",
                     "price": "24.99",
