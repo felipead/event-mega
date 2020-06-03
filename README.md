@@ -27,7 +27,7 @@ So MEGA is just this: a protocol specification that allows your publishers and s
 
 MEGA uses JSON as its data-interchange and object representation format. Implementations also support [BSON](http://bsonspec.org) (_Binary JSON_), which is more compact and efficient.
 
-MEGA payloads can be embedded inside messages or payloads from other transport protocols, if properly encoded. For example, Amazon SQS uses XML to serialize its messages. MEGA payloads may be transported inside a SQS message in the form of a XML-escaped JSON string, or [Base64](https://en.wikipedia.org/wiki/Base64) encoded BSON bytes.
+MEGA payloads can be embedded inside messages or payloads from other transport protocols, if properly encoded. For example, Amazon SQS uses `x-www-form-urlencoded` or XML to serialize its messages. MEGA payloads may be transported inside a SQS message in the form of a XML-escaped JSON string, or [Base64](https://en.wikipedia.org/wiki/Base64) encoded BSON bytes.
 
 To ease adoption, MEGA implementations should be tolerant to events or messages that do not adhere to the protocol. The idea is that MEGA can happily co-exist with your existing architecture or legacy systems.
 
