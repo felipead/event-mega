@@ -12,10 +12,10 @@ This is the **MEGA event-streaming protocol**. It is implemented by:
 
 Making your organization use a common protocol for publishing and subscribing to events has the following benefits:
 
-- It prevents or discourages events with **bad data** that is unstructured, ambiguous or has important information missing.
+- It prevents or discourages events with **bad data** that is unstructured, ambiguous or without identifiable information.
 - By having all your publishers and subscribers adhere to the same data structure, you can develop internal tools and libraries to quickly build or parse events and extract the information you want.
 
-So MEGA is just that: a protocol specification that allows your publishers and subscribers to exchange messages and events in a frictionless manner. It has the following features:
+So MEGA is just this: a protocol specification that allows your publishers and subscribers to exchange messages and events in a frictionless manner. It has the following features:
 
 - It forces all events to have at least a **name** and a **timestamp**.
 - It encourages events to be versioned. Versioning events helps publishers upgrade their data schemas without breaking existing subscribers. You could even allow different versions of your events to co-exist.
