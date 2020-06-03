@@ -29,11 +29,32 @@ MEGA uses JSON as its data-interchange and object representation format. Impleme
 
 MEGA payloads can be embedded inside messages or payloads from other transport protocols, if properly encoded. For example, Amazon SQS uses XML to serialize its messages. MEGA payloads may be transported inside a SQS message in the form of a XML-escaped JSON string, or [Base64](https://en.wikipedia.org/wiki/Base64) encoded BSON bytes.
 
-To ease adoption, MEGA implementations should be tolerant to events or messages that do not adhere to the protocol. The idea is that MEGA can happily co-exist with your existing architecture or legacy systems. In order to accomplish this, it uses the following JSON attribute to identify a MEGA payload:
+To ease adoption, MEGA implementations should be tolerant to events or messages that do not adhere to the protocol. The idea is that MEGA can happily co-exist with your existing architecture or legacy systems.
+
+### The MEGA payload
+
+MEGA payloads are plain simple JSON objects. However, inside a JSON object the following attributes are expected:
 
 ```
-"protocol": "mega"
+"protocol": "mega",
+"version": 1
 ```
+
+This identities the JSON object as a MEGA payload, version 1. If these attributes are not present, implementations will treat the object as a generic data payload, or raise an error.
+
+Inside a MEGA payload, the following sections can be present:
+
+- _Event_: this is required, and contains identifiable information about the event, such as name, timestamp, version and other attributes that will be used for pattern-matching.
+- _Object_: if the event is about an object or entity, this will contain the current object representation. It may also contain more information, such as the previous object state before the event happened.
+- _Extra_: any additional or unstructured data must go here. It's a free-format object.
+
+Here is an illustration:
+
+<p align="left">
+    <img alt="MEGA Payload" src="./resources/diagrams/mega_payload.png">
+</p>
+
+### Examples
 
 A MEGA event can be very simple:
 ```json
@@ -171,6 +192,8 @@ MEGA can also be as much feature-rich as you would like:
     }
 }
 ```
+
+### Schema
 
 Here is a list of all supported attributes:
 
