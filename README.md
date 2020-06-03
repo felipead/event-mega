@@ -28,7 +28,8 @@ A MEGA event can be very simple:
     "event": {
         "name": "user.created",
         "timestamp": "2020-05-04T15:53:27.823",
-        "subject": "987650"
+        "subject": "987650",
+        "username": "john.doe"
     }
 }
 ```
@@ -44,10 +45,10 @@ It can also be more useful:
         "version": 1,
         "domain": "user",
         "subject": "987650",
-        "publisher": "user-service",
+        "username": "john.doe",
         "attributes": {
-            "email": "johndoe_84@example.com",
-            "username": "john.doe"
+            "email": "johndoe_86@example.com",
+            "ssn": "497279436"
         }
     },
     "object": {
@@ -71,15 +72,16 @@ MEGA can also be as much feature-rich as you would like:
     "protocol": "mega",
     "version": 1,
     "event": {
-        "name": "shopping_cart.item.added",
+        "domain": "shopping_cart",
+        "name": "item.added",
         "version": 1,
         "timestamp": "2020-05-04T15:53:23.123",
-        "domain": "shopping_cart",
         "subject": "987650",
         "publisher": "shopping-cart-service",
         "attributes": {
             "item_id": "61fcc874-624e-40f8-8fd7-0e663c7837e8",
-            "quantity": 5
+            "quantity": 5,
+            "price": "19.99"
         }
     },
     "object": {
@@ -168,6 +170,7 @@ Here is a list of all supported attributes:
 | `event.subject`    | _optional_   | string   | The subject to which the event refers to. It is usually an entity identifier, like the database primary key. For example, if the event is about an item being added to the user's shopping cart in an e-commerce system, the subject could be the shopping cart ID or even the user ID. |
 | `event.publisher`  | _optional_   | string   | Any string that can identify the publisher of the event, like the name of a service, system or application. |
 | `event.attributes` | _optional_   | object   | Dictionary of application-specific event attributes. Keep it minimal and only send the data that is specific to the event. These attributes will be used for pattern matching with subscribers. |
+| `event.*`  |   -   |   -          | Any unlisted attribute will be considered part of the `event.attributes` object. |
 | `object.current`   | _optional_   | object   | Current representation of the object or entity that this event refers to. For example, if the event is about an item that was added to the shopping cart, we can use this attribute to transmit the full contents of the shopping cart. |
 | `object.previous`  | _optional_   | object   | Previous representation of the object or entity that this event refers to. This is useful to transmit the state of the entity right before the event happened, if such information is available. |
 | `object.id`      | _optional_   | string   | A string that uniquely identifies the object or entity in your systems, if this information is available. |
