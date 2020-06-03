@@ -1,10 +1,10 @@
 <p align="center">
-    <img alt="MEGA" src="https://github.com/mega-distributed/mega-event-protocol/raw/master/resources/logo/mega_logo_large.png">
+    <img alt="MEGA" src="https://github.com/mega-distributed/event-mega/raw/master/resources/logo/mega_logo_large.png">
 </p>
 
 ---
 
-This is the **MEGA protocol for event-streaming**. It is implemented by:
+This is the **MEGA event-streaming protocol**. It is implemented by:
 
 - → [SQS MEGA](https://github.com/mega-distributed/sqs-mega)
 
@@ -195,7 +195,7 @@ MEGA can also be as much feature-rich as you would like:
 
 ### Schema
 
-Here is a list of all supported attributes:
+Here is a description of all supported attributes:
 
 |  Attribute         | Required?    | Type     | Description |
 | ------------------ |:------------:|:--------:| ----------- |
