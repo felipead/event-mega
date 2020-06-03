@@ -4,6 +4,18 @@
 
 ---
 
+```json
+{
+    "protocol": "mega",
+    "version": 1,
+    "event": {
+        "name": "test",
+        "timestamp": "2020-05-04T15:53:27.823",
+        "subject": "Hello World!"
+    }
+}
+```
+
 This is the **MEGA event-streaming protocol**. It is implemented by:
 
 - → [SQS MEGA](https://github.com/mega-distributed/sqs-mega)
