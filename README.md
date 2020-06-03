@@ -1,5 +1,5 @@
 <p align="center">
-    <img alt="MEGA" src="https://github.com/mega-distributed/event-mega/raw/master/resources/logo/mega_logo_large.png">
+    <img alt="MEGA" src="./resources/logo/mega_logo_large.png">
 </p>
 
 ---
