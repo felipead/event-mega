@@ -4,6 +4,8 @@
 
 ---
 
+This is the **MEGA event protocol**. It aims to be a common protocol for all your **event-streaming** needs, regardless of platform.
+
 ```json
 {
     "protocol": "mega",
@@ -16,7 +18,7 @@
 }
 ```
 
-This is the **MEGA event-streaming protocol**. It is implemented by:
+## Implementations
 
 - → [SQS MEGA](https://github.com/mega-distributed/sqs-mega)
 
