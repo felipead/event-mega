@@ -4,9 +4,24 @@
 
 ---
 
-This is the MEGA protocol for event-streaming. Implementations:
+This is the **MEGA protocol for event-streaming**. It is implemented by:
 
-- [SQS MEGA](https://github.com/mega-distributed/sqs-mega)
+- → [SQS MEGA](https://github.com/mega-distributed/sqs-mega)
+
+## Motivation
+
+Making your organization use a common protocol for publishing and subscribing to events has the following benefits:
+
+- It prevents or discourages events with **bad data** that is ambiguous to understand or has important information missing.
+- By having all your publishers and subscribers adhere to the same data structure, you can develop internal tools and libraries to quickly build or parse events and extract the information you want.
+
+So MEGA is just that: a protocol specification that allows your publishers and subscribers to exchange messages and events in a frictionless manner. It has the following features:
+
+- It forces all events to have at least a **name** and a **timestamp**.
+- It encourages events to be versioned. Versioning events helps publishers upgrade their data schemas without breaking existing subscribers. You could even allow different versions of your events to co-exist.
+- It encourages events to specify at least some essential _attributes_, such as the _domain_ (like `"shopping_cart"`) and _subject_ (for example, the shopping cart identifier or user-id). Of course, it also supports custom event attributes.
+- If the full-contents of an entity **object** needs to be included along the event, it allows it to be sent in a structured and organized manner. Objects can also be versioned independently from events.
+- You are free to include any other additional information or unstructured data, in an **extra** section.
 
 ## The MEGA event-streaming protocol
 
