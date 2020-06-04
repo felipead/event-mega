@@ -54,7 +54,7 @@ MEGA payloads are plain simple JSON objects. However, inside a JSON object the f
 "version": 1
 ```
 
-This identities the JSON object as a MEGA payload, version 1. If these attributes are not present, implementations will treat the object as a generic data payload, or raise an error.
+This identifies the JSON object as a MEGA payload, version 1. If these attributes are not present, implementations will treat the object as a generic data payload, or raise an error.
 
 Inside a MEGA payload, the following sections can be present:
 
